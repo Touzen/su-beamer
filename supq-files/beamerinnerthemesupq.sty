@@ -1,0 +1,107 @@
+% Copyright (c) 2023-2025 Isaac Ren. Licensed under the MIT license (see LICENSE.txt).
+
+\NeedsTeXFormat{LaTeX2e}
+\mode<presentation>
+
+% Requirements
+\RequirePackage{tikz}
+\RequirePackage{graphicx}
+\RequirePackage{adjustbox}
+
+\graphicspath{ {supq-files/figs/} }
+
+% INNER THEME
+% title, parts, blocks, etc.
+\newlength{\largelogowidth}
+\setlength{\largelogowidth}{35mm}
+\newlength{\innermargin}
+\setlength{\innermargin}{\largelogowidth/4}
+
+\def\titlelogofilename{logo/SU_logo_RGB_bla_Landscape.png}
+
+% TITLE PAGE
+\defbeamertemplate{title page}{left}{%
+\donotcoloroutermaths
+\begin{tikzpicture}[remember picture, overlay]
+\node[anchor = north west, inner sep = \innermargin] at (current page.north west) {\includegraphics[width=60mm]{\titlelogofilename}};
+\end{tikzpicture}%
+\usebeamercolor[fg]{title}%
+\parbox[t][.2\paperheight][b]{\textwidth}{\raggedright \usebeamerfont{title} \inserttitle} \vspace{10px} \\
+\usebeamercolor[fg]{subtitle}%
+\usebeamerfont{subtitle} \insertauthor \\
+\insertdate\ --- \insertinstitute%
+\vspace{.1\paperheight}%
+}
+
+\defbeamertemplate{title page}{center}{%
+\donotcoloroutermaths
+\begin{tikzpicture}[remember picture, overlay]
+\node[anchor = north, inner sep = 22mm] at (current page.north) {\includegraphics[width=100mm]{\titlelogofilename}};
+\end{tikzpicture}%
+\vspace{.125\paperheight}%
+\begin{center}
+\usebeamercolor[fg]{title}%
+\parbox[t][.2\paperheight][b]{\textwidth}{\centering \usebeamerfont{title}\inserttitle} \vspace{10px} \\
+
+\usebeamercolor[fg]{subtitle}%
+\usebeamerfont{subtitle} \insertauthor \\
+\insertdate\ --- \insertinstitute%
+\end{center}
+\vspace{.1\paperheight}%
+}
+
+% SECTION PAGE
+\setbeamertemplate{section page}{%
+\donotcoloroutermaths
+\begin{tikzpicture}[remember picture, overlay]
+\node[anchor = north west, inner sep = \innermargin] at (current page.north west) {\includegraphics[width=\largelogowidth]{logo/SU_logo_RGB_bla.png}};
+\end{tikzpicture}%
+%
+\vspace{.2\paperheight}
+
+\usebeamercolor[fg]{section title}%
+\parbox[t][.2\paperheight][b]{\textwidth}{\raggedright \LARGE \insertsection}%
+\vspace{.15\paperheight}%
+}
+
+% END SLIDE
+\newcommand*{\insertendpage}{%
+{
+\setbeamertemplate{headline}[SU-no-logo]
+\setbeamertemplate{footline}{}
+\setbeamercolor{background canvas}{use=end title, bg=end title.bg}% Why doesn't parent work??
+\begin{frame}[b]
+\begin{tikzpicture}[remember picture, overlay]
+\node[anchor = center] at (current page.center) {\includegraphics[width=100mm]{logo/SU_logo_RGB_vit.png}};
+\end{tikzpicture}%
+\end{frame}}%
+}
+
+% BLOCKS
+
+\AtBeginDocument{
+%%%% changing block from https://tex.stackexchange.com/a/524625/216213
+\addtobeamertemplate{block begin}{%
+    \let\oldinsertblocktitle\insertblocktitle%
+    \def\insertblocktitle{\oldinsertblocktitle\par\kern-.5\prevdepth}% probably font dependent
+}{}
+\addtobeamertemplate{block alerted begin}{%
+    \let\oldinsertblocktitle\insertblocktitle%
+    \def\insertblocktitle{\oldinsertblocktitle\par\kern-.5\prevdepth}% probably font dependent
+}{}
+\addtobeamertemplate{block example begin}{%
+    \let\oldinsertblocktitle\insertblocktitle%
+    \def\insertblocktitle{\oldinsertblocktitle\par\kern-.5\prevdepth}% probably font dependent
+}{}
+%%%% end changing block
+}
+
+% ITEMIZE AND ENUMERATE
+
+\setbeamertemplate{itemize items}[circle]
+
+% BIBLIOGRAPHY
+
+\setbeamertemplate{bibliography item}[text]
+
+\mode<all>

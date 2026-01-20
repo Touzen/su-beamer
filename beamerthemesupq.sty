@@ -1,7 +1,7 @@
 % Copyright (c) 2023-2025 Isaac Ren. Licensed under the MIT license (see LICENSE.txt).
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{beamerthemekthpq}[2023/10/05]
+\ProvidesPackage{beamerthemesupq}[2023/10/05]
 
 \mode<presentation>
 
@@ -10,18 +10,19 @@
 \geometry{paperwidth=254mm,paperheight=143mm}
 
 % Settings
-\DeclareOption*{\PassOptionsToPackage{\CurrentOption}{kthpq-files/beamerfontthemekthpq}}
+\DeclareOption*{\PassOptionsToPackage{\CurrentOption}{supq-files/beamerfontthemesupq}}
 
 \ProcessOptions\relax
 
-\usepackage{kthpq-files/beamerfontthemekthpq}
-\usepackage{kthpq-files/beamerinnerthemekthpq}
-\usepackage{kthpq-files/beamerouterthemekthpq}
-\usepackage{kthpq-files/beamercolorthemekthpq}
+\usepackage{supq-files/beamerfontthemesupq}
+\usepackage{supq-files/beamerinnerthemesupq}
+\usepackage{supq-files/beamerouterthemesupq}
+\usepackage{supq-files/beamercolorthemesupq}
 
 % Macros
-\newcommand*{\inserttitlepage}[1][center]{%
-{\setbeamertemplate{headline}{}
+\newcommand*{\inserttitlepage}[1][left]{%
+{
+\setbeamertemplate{headline}[SU-no-logo]
 \setbeamertemplate{footline}{}
 \setbeamertemplate{title page}[#1]
 \setbeamercolor{background canvas}{use=title, bg=title.bg}
@@ -29,7 +30,8 @@
 }
 
 \newcommand*{\insertsectionpage}{%
-{\setbeamertemplate{headline}{}
+{
+\setbeamertemplate{headline}[SU-no-logo]
 \setbeamertemplate{footline}{}
 \setbeamercolor{background canvas}{use=section title, bg=section title.bg}
 \frame[b]{\sectionpage}}%

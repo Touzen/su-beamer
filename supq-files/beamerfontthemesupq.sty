@@ -6,13 +6,13 @@
 
 % Options
 \SetupKeyvalOptions{%
-family=kthpq,
-prefix=kthpq@
+family=supq,
+prefix=supq@
 }
 \DeclareStringOption[lualatex]{engine}
 \DeclareStringOption[sf]{mathshape}
 \DeclareStringOption[auto]{fontdir}
-\ProcessKeyvalOptions{kthpq}
+\ProcessKeyvalOptions{supq}
 
 % Post-processing of options
 \newif\ifuselualatex
@@ -21,28 +21,11 @@ prefix=kthpq@
 \newif\ifautofontdir
 \autofontdirfalse
 
-\newcommand*{\kthpq@fontdir@auto}{% For local setups where lualatex can find Figtree on its own
+\newcommand*{\supq@fontdir@auto}{% For local setups where lualatex can find Figtree on its own
 \autofontdirtrue
 }
 
-\newcommand*{\kthpq@engine@lualatex}{%
-\uselualatextrue
-\RequirePackage[no-math,quiet]{fontspec}% add option "quiet" if the warnings are a problem
-\setmainfont{Georgia}
-\ifautofontdir
-\setsansfont{Figtree}
-\else
-\setsansfont{Figtree}[%
-Path = \kthpq@fontdir,
-UprightFont = *-Regular.otf,
-BoldFont = *-Bold.otf,
-ItalicFont = *-Italic.otf,
-BoldItalicFont = *-BoldItalic.otf%
-]
-\fi
-}
-
-\newcommand*{\kthpq@engine@pdflatex}{%
+\newcommand*{\supq@engine@pdflatex}{%
 % Default to Helvetica (sans serif) and Bitstream Charter (serif)
 \RequirePackage[scaled=.92]{helvet}
 \usepackage{XCharter}
@@ -50,7 +33,7 @@ BoldItalicFont = *-BoldItalic.otf%
 \usepackage[utf8]{inputenc}
 }
 
-\newcommand*{\kthpq@mathshape@sf}{%
+\newcommand*{\supq@mathshape@sf}{%
 \ifuselualatex
 % Figtree is very limited in terms of math symbols, so we supplement it with
 % FiraMath, a sans serif Open Type math font. Arial is used for Greek letters.
@@ -69,10 +52,10 @@ BoldItalicFont = *-BoldItalic.otf%
 % \setmathfont{Figtree-Bold}[range=bfup/{latin,Latin,num}]
 % \setmathfont{Figtree-BoldItalic}[range=bfit/{latin,Latin}]
 % \else
-% \setmathfont{Figtree-Regular.otf}[Path=\kthpq@fontdir,range={"0021-"0027,"002A-"005A,"005C,"005E-"036F,"2013-"2014,"2018-"201E,"2020-"2022,"2026,"2039-"203A,"20AC,"215B-"215E,"2215,"2260,"2264-"2265,up/{latin,Latin,num}}]
-% \setmathfont{Figtree-Italic.otf}[Path=\kthpq@fontdir,range=it/{latin,Latin}]
-% \setmathfont{Figtree-Bold.otf}[Path=\kthpq@fontdir,range=bfup/{latin,Latin,num}]
-% \setmathfont{Figtree-BoldItalic.otf}[Path=\kthpq@fontdir,range=bfit/{latin,Latin}]
+% \setmathfont{Figtree-Regular.otf}[Path=\supq@fontdir,range={"0021-"0027,"002A-"005A,"005C,"005E-"036F,"2013-"2014,"2018-"201E,"2020-"2022,"2026,"2039-"203A,"20AC,"215B-"215E,"2215,"2260,"2264-"2265,up/{latin,Latin,num}}]
+% \setmathfont{Figtree-Italic.otf}[Path=\supq@fontdir,range=it/{latin,Latin}]
+% \setmathfont{Figtree-Bold.otf}[Path=\supq@fontdir,range=bfup/{latin,Latin,num}]
+% \setmathfont{Figtree-BoldItalic.otf}[Path=\supq@fontdir,range=bfit/{latin,Latin}]
 % \fi
 \setmathfont{Arial}[range=up/{greek,Greek}]
 \setmathfont{Arial Italic}[range=it/{greek,Greek}]
@@ -94,9 +77,9 @@ BoldItalicFont = *-BoldItalic.otf%
 \renewcommand{\familydefault}{\oldfamilydefault}
 \fi
 }
-\let\kthpq@engine@latex\kthpq@engine@pdflatex
+\let\supq@engine@latex\supq@engine@pdflatex
 
-\newcommand*{\kthpq@mathshape@rm}{%
+\newcommand*{\supq@mathshape@rm}{%
 \ifuselualatex
 \RequirePackage[warnings-off={mathtools-colon, mathtools-overbracket}]{unicode-math}
 \setmathfont{XCharter-Math}
@@ -108,13 +91,13 @@ BoldItalicFont = *-BoldItalic.otf%
 \fi
 }
 
-\newcommand*{\kthpq@mathshape@custom}{%
+\newcommand*{\supq@mathshape@custom}{%
 }
 
 % Set general fonts
-\csname kthpq@fontdir@\kthpq@fontdir\endcsname\relax
-\csname kthpq@engine@\kthpq@engine\endcsname\relax
-\csname kthpq@mathshape@\kthpq@mathshape\endcsname\relax
+\csname supq@fontdir@\supq@fontdir\endcsname\relax
+\csname supq@engine@\supq@engine\endcsname\relax
+\csname supq@mathshape@\supq@mathshape\endcsname\relax
 
 % Set beamer fonts
 \setbeamerfont{title}{size=\huge}

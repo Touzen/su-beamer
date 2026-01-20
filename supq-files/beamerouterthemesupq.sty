@@ -9,7 +9,7 @@
 \RequirePackage{adjustbox}
 \RequirePackage{calc}
 
-\graphicspath{ {kthpq-files/figs/} }
+\graphicspath{ {supq-files/figs/} }
 
 % Settings
 \newlength{\smalllogowidth}
@@ -39,11 +39,11 @@
 
 \setlength{\fboxsep}{0pt}
 
-\defbeamertemplate{headline}{KTH-full}{%
+\defbeamertemplate{headline}{SU-full}{%
 \donotcoloroutermaths
 \vspace*{\outermargin}%
 \hspace*{\outermargin}%
-\includegraphics[width=\smalllogowidth]{logo/KTH_logo_RGB_bla.pdf}%
+\includegraphics[width=\smalllogowidth]{logo/SU_logo_RGB_bla_Square.png}%
 \hspace*{\outermargin}%
 \vspace*{\outermargin}% Adjust space between headline and content. Not too satisfying
 \parbox[b][\smalllogowidth][c]{\dimexpr\headerwidth-\smalllogowidth-3\outermargin\relax}{%
@@ -68,16 +68,16 @@
 }%
 }
 
-\defbeamertemplate{headline}{KTH-frametitle-only}{%
+\defbeamertemplate{headline}{SU-frametitle-only}{%
 \donotcoloroutermaths
 \vspace*{\outermargin}
 \hspace*{\outermargin}%
-\includegraphics[width=\smalllogowidth]{logo/KTH_logo_RGB_bla.pdf}%
+\includegraphics[width=\smalllogowidth]{logo/SU_logo_RGB_bla.pdf}%
 \hspace*{\outermargin}%
 \begin{beamercolorbox}[wd=\dimexpr\headerwidth-\smalllogowidth-3\outermargin\relax, dp=\outermargin]{frametitle}
     \usebeamerfont{frametitle}%
     \parbox[b][\smalllogowidth][c]{\dimexpr\headerwidth-\smalllogowidth-3\outermargin\relax}{%
-    \vskip.5ex% center text on the circular part of the KTH logo
+    \vskip.5ex% center text on the circular part of the SU logo
     \strut\insertframetitle\strut\par%
     {%
       \ifx\insertframesubtitle\@empty%
@@ -89,16 +89,29 @@
 \end{beamercolorbox}%
 }
 
-\defbeamertemplate{headline}{KTH-section-only}{%
+\defbeamertemplate{headline}{SU-section-only}{%
 \donotcoloroutermaths
 \vspace*{\outermargin}
 \hspace*{\outermargin}%
-\includegraphics[width=\smalllogowidth]{logo/KTH_logo_RGB_bla.pdf}%
+\includegraphics[width=\smalllogowidth]{logo/SU_logo_RGB_bla.pdf}%
 \hspace*{\outermargin}%
 \begin{beamercolorbox}[wd=\dimexpr\headerwidth-\smalllogowidth-3\outermargin\relax, dp=\outermargin]{section in head/foot}
 \usebeamerfont{section in head/foot}
 \parbox[b][\smalllogowidth][c]{\dimexpr\headerwidth-\smalllogowidth-3\outermargin\relax}{%
 \insertsection%
+}%
+\end{beamercolorbox}
+}
+
+\defbeamertemplate{headline}{SU-no-logo}{%
+\donotcoloroutermaths
+\vspace*{\outermargin}
+\hspace*{\outermargin}%
+\vspace*{\smalllogowidth}
+\hspace*{\outermargin}%
+\begin{beamercolorbox}[wd=\dimexpr\headerwidth-\smalllogowidth-3\outermargin\relax, dp=\outermargin]{section in head/foot}
+\usebeamerfont{section in head/foot}
+\parbox[b][\smalllogowidth][c]{\dimexpr\headerwidth-\smalllogowidth-3\outermargin\relax}{%
 }%
 \end{beamercolorbox}
 }
@@ -110,7 +123,7 @@
 \def\insertframesubtitle{}
 }
 
-\setbeamertemplate{headline}[KTH-full]
+\setbeamertemplate{headline}[SU-full]
 
 % FOOTLINE
 
@@ -146,9 +159,9 @@
 }%
 }
 
-\deffootline{KTH-full}{\insertshortauthor}{\insertshortinstitute}{\insertframenumber/\inserttotalframenumber}
+\deffootline{SU-full}{\insertshortauthor}{\insertshortinstitute}{\insertframenumber/\inserttotalframenumber}
 
-\setbeamertemplate{footline}[KTH-full]
+\setbeamertemplate{footline}[SU-full]
 
 % FRAME
 % Frametitle is defined in headline; just cancel out the \vskip from beamer
